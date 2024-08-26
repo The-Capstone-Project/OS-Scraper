@@ -163,6 +163,7 @@ OS information scrapper agents
 ## Contributors
 
 - [Athul Prakash NJ](https://github.com/psychoSherlock)
+- [Andrew C Anil](https://github.com/iamandrewcanil)
 
 ## Workflow
 
