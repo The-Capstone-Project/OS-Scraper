@@ -45,10 +45,6 @@
             "command": "mount | column -t"
         },
         {
-            "description": "Installed Packages",
-            "command": "dpkg -l"
-        },
-        {
             "description": "Running Processes",
             "command": "ps aux"
         },
