@@ -165,6 +165,7 @@ OS information scrapper agents
 - [Athul Prakash NJ](https://github.com/psychoSherlock)
 - [Andrew C Anil](https://github.com/iamandrewcanil)
 - [Akshhay KM](https://github.com/Xanthium7)
+- [Vaishakh S Nair (OneGrit)](https://github.com/vaishakhsnair)
 
 ## Workflow
 
