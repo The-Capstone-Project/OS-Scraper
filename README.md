@@ -4,7 +4,7 @@ OS information scrapper agents
 
 ### TO-DO
 
-- [✓] Distro Information
+- [x] Distro Information
 
   Distribution name, version, and codename.
   Kernel version and build information.
