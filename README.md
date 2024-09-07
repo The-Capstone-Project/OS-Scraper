@@ -1,6 +1,6 @@
-# os-scrapper
+# OS-Scraper
 
-OS information scrapper agents
+OS information scraper agents
 
 ### TO-DO
 
