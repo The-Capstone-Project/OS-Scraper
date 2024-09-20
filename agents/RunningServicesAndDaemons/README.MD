@@ -5,8 +5,8 @@ This Go program retrieves and displays active services, startup settings, and da
 ## Features
 
 - Lists currently active services on the system.
-- Retrieves startup settings for all services (enabled, disabled).
-- Reads and displays configuration settings. On the program the example is from the SSH daemon (`sshd_config`).
+- Retrieves startup settings for all services.
+- Reads and displays configuration settings. Default is the SSH daemon (`sshd_config`).
 
 ## Prerequisites
 
@@ -14,4 +14,9 @@ This Go program retrieves and displays active services, startup settings, and da
 - Appropriate permissions to run system commands and access configuration files.
 
 ## Usage
-To run on terminal: sudo go run main.go  (Root access required to access the daemon config files)
+To run on terminal: 
+sudo go run main.go  (Root access required to access the daemon config files)
+
+
+use -config flag to give the path for the daemon config file (By Default SSH Dameon Config File)
+sudo go run main.go -config enter-path-here
