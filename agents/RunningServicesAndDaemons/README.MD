@@ -20,3 +20,5 @@ sudo go run main.go  (Root access required to access the daemon config files)
 
 use -config flag to give the path for the daemon config file (By Default SSH Dameon Config File)
 sudo go run main.go -config enter-path-here
+
+Note: Its set to not read the comments and empty lines of the config file, can be changed in code easily. 
