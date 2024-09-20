@@ -2,48 +2,69 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
-
 	"strings"
 )
 
 func main() {
-	// Ask the user whether to fetch history or not
-	fmt.Print("Do you want to fetch the history? (yes/no): ")
+	var n int
+	flag.IntVar(&n, "n", -1, "Number of history items to fetch")
+	flag.Parse()
+
+	zshHistoryFile := os.Getenv("HOME") + "/.zsh_history"
+
+	if n == -1 {
+		fmt.Print("Warning: Entire history will be collected! Are you sure? (yes/no): ")
+	} else if n == 0 {
+		fmt.Print("Warning: Entire history will be collected (n=0)! Are you sure? (yes/no): ")
+	} else {
+		fmt.Printf("Warning: Last %d history items will be collected! Are you sure? (yes/no): ", n)
+	}
+
 	reader := bufio.NewReader(os.Stdin)
 	input, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Println("Error reading input:", err)
 		return
 	}
-
-	// Trim any whitespace and convert input to lowercase
 	input = strings.TrimSpace(strings.ToLower(input))
-
-	if input == "no" {
-		fmt.Println("User chose not to execute the history command.")
-		return
-	} else if input == "yes" || input == "y" {
-
-		// Print the output of 'history' command
-		fmt.Println("Output of 'history' command:")
-
-	} else {
-		fmt.Println("Invalid input, exiting program.")
+	if input != "yes" && input != "y" {
+		fmt.Println("Operation cancelled.")
 		return
 	}
 
-	// Read the .zsh_history file and save its content to a variable
-	zshHistoryFile := os.Getenv("HOME") + "/.zsh_history"
-	zshHistoryContent, err := os.ReadFile(zshHistoryFile)
+	if n <= 0 {
+		printEntireHistory(zshHistoryFile)
+	} else {
+		printLimitedHistory(zshHistoryFile, n)
+	}
+}
+
+func printEntireHistory(filename string) {
+	content, err := os.ReadFile(filename)
 	if err != nil {
 		fmt.Println("Error reading .zsh_history file:", err)
 		return
 	}
-	zshHistoryData := string(zshHistoryContent)
-
-	// Print the content of .zsh_history file
 	fmt.Println("Content of .zsh_history file:")
-	fmt.Println(zshHistoryData)
+	fmt.Println(string(content))
+}
+
+func printLimitedHistory(filename string, n int) {
+	content, err := os.ReadFile(filename)
+	if err != nil {
+		fmt.Println("Error reading .zsh_history file:", err)
+		return
+	}
+	lines := strings.Split(string(content), "\n")
+	start := len(lines) - n
+	if start < 0 {
+		start = 0
+	}
+	fmt.Printf("Last %d lines of .zsh_history file:\n", n)
+	for _, line := range lines[start:] {
+		fmt.Println(line)
+	}
 }
