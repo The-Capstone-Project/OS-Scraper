@@ -168,7 +168,7 @@ OS information scraper agents
 - [Anubind C Biju](https://github.com/anubix05)
 - [Abin Joy](https://github.com/Abinjoy025)
 - [Vaishakh S Nair (OneGrit)](https://github.com/vaishakhsnair)
-- [Adithi asok](https://github.com/kaalibabe)
+- [Adithi Asok](https://github.com/kaalibabe)
 - [Krishna Rajeev](https://github.com/solvz)
 
 ## Workflow
