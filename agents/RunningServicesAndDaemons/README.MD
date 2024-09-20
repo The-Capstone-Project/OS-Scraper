@@ -17,7 +17,6 @@ This Go program retrieves and displays active services, startup settings, and da
 To run on terminal: 
 sudo go run main.go  (Root access required to access the daemon config files)
 
-
 use -config flag to give the path for the daemon config file (By Default SSH Dameon Config File)
 sudo go run main.go -config enter-path-here
 
