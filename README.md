@@ -16,13 +16,13 @@ OS information scraper agents
   Size and usage statistics of major directories.
   Mounted file systems and their mount points.
 
-- [ ] Shell Information
+- [x] Shell Information
 
   Default shell and available shells.
   Shell configuration files (.bashrc, .zshrc, etc.).
   Shell aliases and functions.
 
-- [ ] Environment Information
+- [x] Environment Information
 
   System-wide environment variables.
   User-specific environment variables.
@@ -111,7 +111,7 @@ OS information scraper agents
   SELinux or AppArmor status and configurations.
   Installed security tools (e.g., fail2ban, auditd).
 
-- [ ] Running Services and Daemons
+- [ ] Running Services and Daemons and their status
 
   List of active services (systemctl list-units --type=service).
   Startup settings for services (enabled, disabled).
@@ -168,7 +168,8 @@ OS information scraper agents
 - [Anubind C Biju](https://github.com/anubix05)
 - [Abin Joy](https://github.com/Abinjoy025)
 - [Vaishakh S Nair (OneGrit)](https://github.com/vaishakhsnair)
-- [Adithi asok](https://github.com/kaalibabe)
+- [Adithi Asok](https://github.com/kaalibabe)
+- [Krishna Rajeev](https://github.com/solvz)
 
 ## Workflow
 
