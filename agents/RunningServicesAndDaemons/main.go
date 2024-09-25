@@ -15,6 +15,10 @@ func runCommand(cmd string, args ...string) (string, error) {
 }
 
 func getActiveServices() string {
+	//To Just Run The Command
+	//return runCommand("systemctl", "list-units", "--type=service", "--state=running")
+
+	//To get just the names of the services
 	output, err := runCommand("systemctl", "list-units", "--type=service", "--state=running")
 	if err != nil {
 		return fmt.Sprintf("Error fetching active services: %s\n", err)
@@ -33,11 +37,15 @@ func getActiveServices() string {
 	if err := scanner.Err(); err != nil {
 		return fmt.Sprintf("Error scanning output: %s\n", err)
 	}
-	fmt.Printf("Total Number Of Active Services: %d\n", (len(serviceNames) - 5))
-	return strings.Join(serviceNames[1:len(serviceNames)-4], "\n")
+	fmt.Printf("Total Number Of Active Services: %d\n", (len(serviceNames) - 5)) //Displays Total Number Of Active Services
+	return strings.Join(serviceNames[1:len(serviceNames)-4], "\n")               //Returns Active Service Names Only
 }
 
 func getServiceStartupSettings() string {
+	//To Just Run The Command
+	//return runCommand("systemctl", "list-unit-files", "--type=service")
+
+	//To get just the service names and their startup status ommiting the PRESET column
 	output, err := runCommand("systemctl", "list-unit-files", "--type=service")
 	if err != nil {
 		return fmt.Sprintf("Error fetching service startup settings: %s\n", err)
@@ -47,6 +55,7 @@ func getServiceStartupSettings() string {
 	for scanner.Scan() {
 		line := strings.TrimSpace(scanner.Text())
 		if line != "" {
+			//The service name is the first column, and the status is the second
 			parts := strings.Fields(line)
 			if len(parts) >= 2 {
 				serviceStatuses = append(serviceStatuses, fmt.Sprintf("%s: %s", parts[0], parts[1]))
@@ -56,11 +65,14 @@ func getServiceStartupSettings() string {
 	if err := scanner.Err(); err != nil {
 		return fmt.Sprintf("Error scanning output: %s\n", err)
 	}
-	fmt.Printf("Total Number Of Services: %d\n", (len(serviceStatuses) - 2))
-	return strings.Join(serviceStatuses[1:len(serviceStatuses)-1], "\n")
+	fmt.Printf("Total Number Of Services: %d\n", (len(serviceStatuses) - 2)) //Displays Total Number Of Services
+	return strings.Join(serviceStatuses[1:len(serviceStatuses)-1], "\n")     //Returns services with startup settings
 }
 
 func getService(serviceName string) string {
+	//To Just Run The Command
+	//return runCommand("systemctl", "status", serviceName)
+
 	output, err := runCommand("systemctl", "status", serviceName)
 	if err != nil {
 		exitError, ok := err.(*exec.ExitError)
@@ -80,6 +92,8 @@ func getService(serviceName string) string {
 }
 
 func getDaemonConfig(serviceName string) string {
+
+	//Config file paths
 	configLocations := []string{
 		fmt.Sprintf("/etc/systemd/system/%s.service", serviceName),
 		fmt.Sprintf("/lib/systemd/system/%s.service", serviceName),
@@ -88,6 +102,7 @@ func getDaemonConfig(serviceName string) string {
 		fmt.Sprintf("/etc/%s.conf", serviceName),
 	}
 
+	//Looking for config files
 	for _, location := range configLocations {
 		content, err := readConfigFile(location)
 		if err == nil {
@@ -106,7 +121,9 @@ func readConfigFile(path string) (string, error) {
 	return string(content), nil
 }
 
+// Main fn for printing Output
 func main() {
+	//Flags
 	serviceName := flag.String("service", "", "Name of the specific service to fetch")
 	showConfig := flag.Bool("show-config", false, "Show the configuration for the service")
 	flag.Parse()
