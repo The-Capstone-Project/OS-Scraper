@@ -1,23 +1,46 @@
-# Services and Dameons Scraper
+# Services and Daemons Scrapper
 
-This Go program retrieves and displays active services, startup settings, and daemon-specific configurations.
+This program fetches service statuses, configurations, and startup settings.
 
 ## Features
 
-- Lists currently active services on the system.
-- Retrieves startup settings for all services.
-- Reads and displays configuration settings. Default is the SSH daemon (`sshd_config`).
+- Lists currently active services on the system
+- Retrieves startup settings for all services
+- Provides detailed information about a specific service
+- Attempts to locate and display the configuration file for a given service
 
 ## Prerequisites
 
-- Go 1.16 or later installed on your system.
-- Appropriate permissions to run system commands and access configuration files.
+- Appropriate permissions to run system commands and access configuration files (root access may be required for some operations)
 
 ## Usage
-To run on terminal: 
-sudo go run main.go  (Root access required to access the daemon config files)
 
-use -config flag to give the path for the daemon config file (By Default SSH Dameon Config File)
-sudo go run main.go -config enter-path-here
 
-Note: Its set to not read the comments and empty lines of the config file, can be changed in code easily. 
+```
+sudo go run main.go [flags]
+```
+
+- `-service <name>`: Specifies a service name to query for detailed information
+- `-show-config`:  Displays config file. ( `-service` is required to specify the service for which the config is to be shown.)
+
+### Examples
+
+1. Display information about all services (active services and startup settings:
+   ```
+   sudo go run main.go
+   ```
+
+2. Get information about a specific service:
+   ```
+   sudo go run main.go -service crond
+   ```
+
+3. Show the configuration of a specific service:
+   ```
+   sudo go run main.go -service crond -show-config
+   ```
+
+
+## Note
+
+Root access (sudo) is required to access most daemon configuration files and to fetch certain service information. 
