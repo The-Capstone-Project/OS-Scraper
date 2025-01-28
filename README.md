@@ -163,7 +163,7 @@ OS information scraper agents
 ## Contributors
 
 - [Athul Prakash NJ](https://github.com/psychoSherlock)
-- [Andrew C Anil](https://github.com/iamandrewcanil)
+- [Andrew C Anil](https://github.com/hackdrew)
 - [Akshhay KM](https://github.com/Xanthium7)
 - [Anubind C Biju](https://github.com/anubix05)
 - [Abin Joy](https://github.com/Abinjoy025)
