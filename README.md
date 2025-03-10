@@ -170,6 +170,7 @@ OS information scraper agents
 - [Vaishakh S Nair (OneGrit)](https://github.com/vaishakhsnair)
 - [Adithi Asok](https://github.com/kaalibabe)
 - [Krishna Rajeev](https://github.com/solvz)
+- [sudheesh s pai](https://github.com/sudheeshspai)
 
 ## Workflow
 
