@@ -1,8 +1,7 @@
-package main
+package osinfo
 
 import (
 	"encoding/json"
-	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -37,12 +36,8 @@ func runCommand(command string) (string, error) {
 	return strings.TrimSpace(string(output)), nil
 }
 
-func main() {
-	// Define a command-line flag for specifying the commands file
-	var commandsFile string
-	flag.StringVar(&commandsFile, "f", "commands.json", "Path to the commands JSON file")
-	flag.Parse()
-
+// Run executes commands from the provided JSON file
+func Run(commandsFile string) {
 	// Read the JSON file
 	jsonFile, err := os.Open(commandsFile)
 	if err != nil {

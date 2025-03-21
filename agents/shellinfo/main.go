@@ -1,4 +1,4 @@
-package main
+package shellinfo
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func main() {
+func Run() {
 	// Fetch the shell environment variable
 	shell := os.Getenv("SHELL")
 	if shell == "" {

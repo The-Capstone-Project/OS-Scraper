@@ -1,4 +1,4 @@
-package main
+package env_info
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func main() {
+func Run() {
 	// Fetch all environment variables
 	envVars := os.Environ()
 
