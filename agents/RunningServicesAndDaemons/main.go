@@ -1,4 +1,4 @@
-package main
+package RunningServicesAndDaemons
 
 import (
 	"bufio"
@@ -122,7 +122,7 @@ func readConfigFile(path string) (string, error) {
 }
 
 // Main fn for printing Output
-func main() {
+func Run() {
 	//Flags
 	serviceName := flag.String("service", "", "Name of the specific service to fetch")
 	showConfig := flag.Bool("show-config", false, "Show the configuration for the service")
